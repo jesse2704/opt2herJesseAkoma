@@ -1,2 +1,5 @@
-package PACKAGE_NAME;public class Huurder {
+import java.util.Collection;
+
+public class Huurder extends Gebruiker {
+    public Collection<VerhuurFragment> Fragment;
 }
