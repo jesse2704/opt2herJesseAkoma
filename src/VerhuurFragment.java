@@ -1,13 +1,16 @@
+package src;
+
 import java.util.Date;
+import java.util.UUID;
 
 public class VerhuurFragment {
-    public int Id;
+    public UUID Id;
     public Date StartTijd;
     public Date EindTijd;
     public Huurder Huurder;
     public String HuurderEmail;
 
-    public int getId() {
+    public UUID getId() {
         return Id;
     }
 
