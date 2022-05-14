@@ -1,3 +1,5 @@
+package src;
+
 import java.util.Collection;
 
 public class Auto {
