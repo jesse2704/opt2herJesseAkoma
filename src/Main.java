@@ -9,9 +9,20 @@ public class Main {
     public static Gebruiker gebruiker;
 
     public static void main(String[] args) throws ParseException {
+        //Huurders
+        Huurder huurder1 = new Huurder("huurder", "huurder@gmail.com", "#1Geheim", "test", "gebruiker", "0620903865");
+        Huurder huurder2 = new Huurder("jesse", "jesse@gmail.com", "#1Geheim", "jesse", "akoma", "0620903865");
+
+        //Verhuurders
+
+        //Licenties
         Licentie licentie1 = new Licentie(1, 8);
         Licentie licentie2 = new Licentie(2, 6);
-        Huurder huurder = new Huurder("huurder", "huurder@gmail.com", "#1Geheim", "test", "gebruiker", "0620903865");
+
+        //setLicenties
+        huurder1.setLicentie(licentie1);
+        huurder2.setLicentie(licentie2);
+
         Auto auto1 = new Auto("Mercedes");
         Auto auto2 = new Auto("Ferrari");
 
@@ -26,14 +37,10 @@ public class Main {
         Date startTijd2 = new SimpleDateFormat("d/M/yyyy").parse(startTijdNotParsed2);
         Date eindTijd2 = new SimpleDateFormat("d/M/yyyy").parse(eindTijdNotParsed2);
 
-
-        VerhuurFragment verhuurFragment1 = new VerhuurFragment(startTijd1, eindTijd1, huurder, huurder.getEmailAddress());
-        VerhuurFragment verhuurFragment2 = new VerhuurFragment(startTijd2, eindTijd2, huurder, huurder.getEmailAddress());
+        VerhuurFragment verhuurFragment1 = new VerhuurFragment(startTijd1, eindTijd1, huurder1, huurder1.getEmailAddress());
+        VerhuurFragment verhuurFragment2 = new VerhuurFragment(startTijd2, eindTijd2, huurder1, huurder1.getEmailAddress());
         auto1.addFragment(verhuurFragment1);
         auto2.addFragment(verhuurFragment2);
-
-
-        System.out.println(gebruiker.getGebruikers());
 
         Scanner scanner = new Scanner(System.in);
         // check if any user is logged in, if not ask user to login or register

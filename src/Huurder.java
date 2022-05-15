@@ -1,82 +1,60 @@
 package src;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.UUID;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class Huurder extends Gebruiker {
 
-    public Collection<VerhuurFragment> fragment;
+    public ArrayList<VerhuurFragment> fragment;
     public Licentie licentie;
 
     public Huurder(String userName, String emailAddress, String password, String firstName, String lastName, String phoneNumber) {
         super(userName, emailAddress, password, firstName, lastName, phoneNumber);
         this.licentie = null;
-        this.fragment = new Collection<VerhuurFragment>() {
-            @Override
-            public int size() {
-                return 0;
-            }
+        this.fragment = new ArrayList<VerhuurFragment>();
+    }
 
-            @Override
-            public boolean isEmpty() {
-                return false;
-            }
+    public ArrayList<VerhuurFragment> getFragment() {
+        return fragment;
+    }
 
-            @Override
-            public boolean contains(Object o) {
-                return false;
-            }
+    public Licentie getLicentie() {
+        return licentie;
+    }
 
-            @Override
-            public Iterator<VerhuurFragment> iterator() {
-                return null;
-            }
+    public Boolean hasLicentie(){
+        if (this.getLicentie() != null) return true;
+        return false;
+    }
 
-            @Override
-            public Object[] toArray() {
-                return new Object[0];
-            }
+    public int getMaxCarFromLicentie()
+    {
+        return this.getLicentie().maxAuto;
+    }
 
-            @Override
-            public <T> T[] toArray(T[] a) {
-                return null;
-            }
+    public int getCurrentActiveRentalAmount() throws ParseException {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        Date today = new Date();
+        String todaysdate = formatter.format(today);
+        Date todaysDate= new SimpleDateFormat("d/M/yyyy").parse(todaysdate);
 
-            @Override
-            public boolean add(VerhuurFragment verhuurFragment) {
-                return false;
-            }
+        int count = 0;
 
-            @Override
-            public boolean remove(Object o) {
-                return false;
-            }
+       for (VerhuurFragment verhuurFragment : this.getFragment())
+       {
+           if(!verhuurFragment.getEindTijd().before(todaysDate))
+           {
+               count++;
+           }
+       }
+        return count;
+    }
 
-            @Override
-            public boolean containsAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public boolean addAll(Collection<? extends VerhuurFragment> c) {
-                return false;
-            }
-
-            @Override
-            public boolean removeAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public boolean retainAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public void clear() {
-
-            }
-        };
+    public void setLicentie(Licentie licentie) {
+        this.licentie = licentie;
     }
 }

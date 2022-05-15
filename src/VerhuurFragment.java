@@ -1,5 +1,7 @@
 package src;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
@@ -37,5 +39,13 @@ public class VerhuurFragment {
 
     public String getHuurderEmail() {
         return huurderEmail;
+    }
+
+    public static Date getTodaysDate() throws ParseException {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        Date today = new Date();
+        String todaysdate = formatter.format(today);
+        Date todaysDate= new SimpleDateFormat("d/M/yyyy").parse(todaysdate);
+        return todaysDate;
     }
 }

@@ -98,64 +98,74 @@ public abstract class Gebruiker {
     public void autoHuren() throws ParseException {
         DateFormat formatter = new SimpleDateFormat("d/M/yyyy");
         ArrayList<Auto> autos = new ArrayList<>();
+        Boolean inputDateIsValid = false;
 
-        Scanner scanner = new Scanner (System.in);
-        System.out.println("Wat is u gewenste startdatum? (30/06/2022):");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Wat is u gewenste startdatum? (dd/MM/yyyy):");
         String inputStartDatum = scanner.nextLine();
-        Date startDatum= new SimpleDateFormat("d/M/yyyy").parse(inputStartDatum);
 
-        System.out.println("Wat is u gewenste stopdatum? (31-06-2022):");
+        System.out.println("Wat is u gewenste stopdatum? (dd-MM-yyyy):");
         String inputEindDatum = scanner.nextLine();
-        Date eindDatum= new SimpleDateFormat("d/M/yyyy").parse(inputEindDatum);
 
-
-        int count = -1;
-        ArrayList<Auto> beschikbaarLijst = new ArrayList<Auto>();
-        System.out.println("Dit zijn de beschikbare autos op de gegeven start-eind datum:");
-
-
-        for (Auto auto : Auto.getAutos())
-        {
-            count++;
-
-            for (VerhuurFragment fragment : auto.getFragmenten())
-            {
-
-                if(startDatum.before(fragment.getStartTijd()) && eindDatum.after(fragment.getStartTijd()) ||
-                        startDatum.before(fragment.getEindTijd()) && eindDatum.after(fragment.getEindTijd()) ||
-                        startDatum.before(fragment.getStartTijd()) && eindDatum.after(fragment.getEindTijd()) ||
-                        startDatum.after(fragment.getStartTijd()) && eindDatum.before(fragment.getEindTijd()) )
-                {
-                    //Auto is niet beschikbaar
-                    System.out.print("They overlap");
-                }
-
-                else {
-                    //Auto is wel beschikbaar
-                    beschikbaarLijst.add(auto);
-                    System.out.println(count + ". "+  auto.getMerk());
-                }
-
-            }
-        }
-        System.out.println("Maak een keuze");
-        int inputAutoKeuze = scanner.nextInt();
-        Auto selectAuto = beschikbaarLijst.get(inputAutoKeuze);
-        System.out.println(selectAuto);
-
-            for (Auto auto : Auto.getAutos())
-            {
-                if (auto == selectAuto)
-                {
-                    //Maak verhuurfragment aan en voeg die toe aan de geselecteerde auto
-                    VerhuurFragment newFragment = new VerhuurFragment(startDatum, eindDatum, (Huurder) this, this.emailAddress);
-                    auto.addFragment(newFragment);
-                    System.out.println("Uw geselecteerde auto is gehuurd");
-                }
-            }
-
+        if (!inputStartDatum.matches("(^(((0[1-9]|1[0-9]|2[0-8])[\\/](0[1-9]|1[012]))|((29|30|31)[\\/](0[13578]|1[02]))|((29|30)[\\/](0[4,6,9]|11)))[\\/](19|[2-9][0-9])\\d\\d$)|(^29[\\/]02[\\/](19|[2-9][0-9])(00|04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96)$)")
+                && !inputEindDatum.matches("(^(((0[1-9]|1[0-9]|2[0-8])[\\/](0[1-9]|1[012]))|((29|30|31)[\\/](0[13578]|1[02]))|((29|30)[\\/](0[4,6,9]|11)))[\\/](19|[2-9][0-9])\\d\\d$)|(^29[\\/]02[\\/](19|[2-9][0-9])(00|04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96)$)")) {
+            System.out.println("De datum is niet juist ingevuld");
+        } else {
+            inputDateIsValid = true;
         }
 
+        if (inputDateIsValid) {
+            Date startDatum = new SimpleDateFormat("d/M/yyyy").parse(inputStartDatum);
+            Date eindDatum = new SimpleDateFormat("d/M/yyyy").parse(inputEindDatum);
+
+            if (startDatum.before(VerhuurFragment.getTodaysDate()) || eindDatum.before(VerhuurFragment.getTodaysDate())) {
+                System.out.println("Jouw gegeven datum is ongeldig");
+            } else {
+
+                int count = -1;
+                ArrayList<Auto> beschikbaarLijst = new ArrayList<Auto>();
+                System.out.println("Dit zijn de beschikbare autos op de gegeven start-eind datum:");
+
+
+                for (Auto auto : Auto.getAutos()) {
+                    count++;
+
+                    for (VerhuurFragment fragment : auto.getFragmenten()) {
+
+                        if (startDatum.before(fragment.getStartTijd()) && eindDatum.after(fragment.getStartTijd()) ||
+                                startDatum.before(fragment.getEindTijd()) && eindDatum.after(fragment.getEindTijd()) ||
+                                startDatum.before(fragment.getStartTijd()) && eindDatum.after(fragment.getEindTijd()) ||
+                                startDatum.after(fragment.getStartTijd()) && eindDatum.before(fragment.getEindTijd())) {
+                            //Auto is niet beschikbaar
+                        } else {
+                            //Auto is wel beschikbaar
+                            beschikbaarLijst.add(auto);
+                            System.out.println(count + ". " + auto.getMerk());
+                        }
+
+                    }
+                }
+                System.out.println("Maak een keuze");
+                int inputAutoKeuze = scanner.nextInt();
+                Auto selectAuto = beschikbaarLijst.get(inputAutoKeuze);
+
+                if (((Huurder) this).hasLicentie() && ((Huurder) this).getCurrentActiveRentalAmount() < ((Huurder) this).getLicentie().type) {
+
+                    for (Auto auto : Auto.getAutos()) {
+                        if (auto == selectAuto) {
+                            //Maak verhuurfragment aan en voeg die toe aan de geselecteerde auto
+                            VerhuurFragment newFragment = new VerhuurFragment(startDatum, eindDatum, (Huurder) this, this.emailAddress);
+                            auto.addFragment(newFragment);
+                            ((Huurder) this).getFragment().add(newFragment);
+                            System.out.println("Uw geselecteerde auto is gehuurd");
+                        }
+                    }
+                } else {
+                    System.out.println("Je voldoet niet aan de voorwaardes");
+                }
+            }
+        }
     }
+}
 
 
