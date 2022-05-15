@@ -5,28 +5,37 @@ import java.util.UUID;
 
 public class VerhuurFragment {
     public UUID Id;
-    public Date StartTijd;
-    public Date EindTijd;
-    public Huurder Huurder;
-    public String HuurderEmail;
+    public Date starttijd;
+    public Date eindtijd;
+    public Huurder huurder;
+    public String huurderEmail;
+
+    public VerhuurFragment(Date startTijd, Date eindTijd, Huurder huurder, String huurderEmail)
+    {
+        this.Id = UUID.randomUUID();
+        this.starttijd = startTijd;
+        this.eindtijd = eindTijd;
+        this.huurder = huurder;
+        this.huurderEmail = huurderEmail;
+    }
 
     public UUID getId() {
         return Id;
     }
 
     public Date getStartTijd() {
-        return StartTijd;
+        return starttijd;
     }
 
     public Date getEindTijd() {
-        return EindTijd;
+        return eindtijd;
     }
 
     public Huurder getHuurder() {
-        return Huurder;
+        return huurder;
     }
 
     public String getHuurderEmail() {
-        return HuurderEmail;
+        return huurderEmail;
     }
 }

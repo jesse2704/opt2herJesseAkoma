@@ -10,13 +10,7 @@ public class Huurder extends Gebruiker {
     public Licentie licentie;
 
     public Huurder(String userName, String emailAddress, String password, String firstName, String lastName, String phoneNumber) {
-        this.id = UUID.randomUUID();
-        this.userName = emailAddress;
-        this.emailAddress = emailAddress;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
+        super(userName, emailAddress, password, firstName, lastName, phoneNumber);
         this.licentie = null;
         this.fragment = new Collection<VerhuurFragment>() {
             @Override

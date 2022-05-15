@@ -8,13 +8,7 @@ public class Verhuurder extends Gebruiker {
     public Collection<Auto> Autos;
 
     public Verhuurder(String userName, String emailAddress, String password, String firstName, String lastName, String phoneNumber) {
-        this.id = UUID.randomUUID();
-        this.userName = emailAddress;
-        this.emailAddress = emailAddress;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
+        super(userName, emailAddress, password, firstName, lastName, phoneNumber);
         this.Autos = new Collection<Auto>() {
             @Override
             public int size() {
@@ -81,6 +75,15 @@ public class Verhuurder extends Gebruiker {
 
             }
         };
+    }
+
+    public Collection<Auto> getAutos() {
+        return Autos;
+    }
+
+    public void addAuto(String merk)
+    {
+        getAutos().add(new Auto(merk));
     }
 
 }
