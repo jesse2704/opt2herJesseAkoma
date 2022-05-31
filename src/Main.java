@@ -14,17 +14,25 @@ public class Main {
         Huurder huurder2 = new Huurder("jesse", "jesse@gmail.com", "#1Geheim", "jesse", "akoma", "0620903865");
 
         //Verhuurders
+        Verhuurder verhuurder1 = new Verhuurder("verhuurder", "huurder@gmail.com", "#1Geheim", "test", "gebruiker", "0620903865");
+        Verhuurder verhuurder2 = new Verhuurder("verhuurder2", "huurder@gmail.com", "#1Geheim", "test", "gebruiker", "0620903865");
+
 
         //Licenties
-        Licentie licentie1 = new Licentie(1, 8);
+        Licentie licentie1 = new Licentie(1, 3);
         Licentie licentie2 = new Licentie(2, 6);
 
         //setLicenties
         huurder1.setLicentie(licentie1);
         huurder2.setLicentie(licentie2);
 
+        //Autos
         Auto auto1 = new Auto("Mercedes");
         Auto auto2 = new Auto("Ferrari");
+
+        //Zet autos in verhuurders inventaris
+        verhuurder1.getAutos().add(auto1);
+        verhuurder1.getAutos().add(auto2);
 
         //Verhuurfragmenten aanmaken
         String startTijdNotParsed1 = "15/05/2022";
@@ -45,6 +53,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         // check if any user is logged in, if not ask user to login or register
         if (gebruiker == null) {
+
             System.out.println("1. Inloggen");
             System.out.println("2. Registreren");
             System.out.println("Maak een keuze:");
@@ -70,72 +79,6 @@ public class Main {
                 main(args);
             }
         }
-
-        //If user is logged in and Huurder
-        if (gebruiker.isInstanceOfHuurder() == true) {
-            System.out.println("Maak een keuze:");
-            System.out.println("1. Auto huren");
-            System.out.println("2. Overzicht");
-            System.out.println("3. Uitloggen");
-            System.out.println("Voer je keus in:");
-            int keus = scanner.nextInt();
-            scanner.nextLine();
-            System.out.println(" ");
-            switch (keus) {
-                case 1:
-                    gebruiker.autoHuren();
-                    break;
-                // check if user want to register
-                case 2:
-                    //
-                    break;
-                case 3:
-                    gebruiker = null;
-                    main(args);
-                    break;
-                default:
-                    System.out.println("Foutieve invoer");
-                    main(args);
-            }
-        }
-
-        //If user is logged in and Verhuurder
-        if (gebruiker.isInstanceOfHuurder() == false)
-        {
-            Verhuurder verhuurder = (Verhuurder) gebruiker;
-            System.out.println("Maak een keuze:");
-            System.out.println("1. Auto toevoegen");
-            System.out.println("2. Auto verwijderen");
-            System.out.println("3. Overzicht");
-            System.out.println("4. Uitloggen");
-            System.out.println("Voer je keus in:");
-            int keus = scanner.nextInt();
-            scanner.nextLine();
-            System.out.println(" ");
-            switch (keus) {
-                case 1:
-                    System.out.println("Welke auto wilt u toevoegen");
-                    String merkAuto = scanner.nextLine();
-                    verhuurder.addAuto(merkAuto);
-
-                    break;
-                case 2:
-                    //Verwijderen
-                    break;
-                case 3:
-                    //Overzicht
-                    break;
-                case 4:
-                    gebruiker = null;
-                    main(args);
-                    break;
-                default:
-                    System.out.println("Foutieve invoer");
-                    main(args);
-        }
+        gebruiker.userOptionMenu();
     }
-    }
-
-
-
 }

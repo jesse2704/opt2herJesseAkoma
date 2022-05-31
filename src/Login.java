@@ -20,6 +20,20 @@ public class Login {
         if(!Auth.Authentication(username, password)){return null;};
         for (Gebruiker gebruiker : gebruikers){
             if(gebruiker.getUserName().equals(username) && gebruiker.getPassword().equals(password)) {
+                gebruiker.setIngelogd(true);
+                return gebruiker;
+            }
+        }
+        return null;
+    }
+
+    public static Gebruiker login(String userName, String passWord)
+    {
+        AuthenticatieNormaal Auth = new AuthenticatieNormaal();
+        if(!Auth.Authentication(userName, passWord)){return null;};
+        for (Gebruiker gebruiker : gebruikers){
+            if(gebruiker.getUserName().equals(userName) && gebruiker.getPassword().equals(passWord)) {
+                gebruiker.setIngelogd(true);
                 return gebruiker;
             }
         }
@@ -53,5 +67,76 @@ public class Login {
         } else {
             return new Verhuurder(username, email, password, firstName, lastName, phone);
         }
+    }
+
+    public static ArrayList<Gebruiker> getGebruikers() {
+        return gebruikers;
+    }
+
+    public static String checkRegisterEligble(Boolean heeftRijbewijs, String usernameUniek, int leeftijd, String wachtwoord)
+    {
+        String result = "";
+        ArrayList<String> gebruikersnamen = new ArrayList<>();
+        String sterkte = "zwak";
+
+        for (Gebruiker gebruiker : Login.getGebruikers())
+        {
+            gebruikersnamen.add(gebruiker.getUserName());
+        }
+
+        if (heeftRijbewijs)
+        {
+            if(!gebruikersnamen.contains(usernameUniek))
+            {
+                if (leeftijd >= 21)
+                {
+                    if(wachtwoord.length() > 6 && wachtwoord.matches(".*[A-Z].*"))
+                    {
+                        sterkte = "matig";
+
+                        if(wachtwoord.matches("^(?=.*[a-z])(?=.*\\d)(?=.*[A-Z])" + "(?=.*[@#$%!]).+$")){
+                            sterkte = "goed";
+                            result = "Gebruiker kan worden aangemaakt";
+                        } else {
+                            result += "wachtwoord is matig";
+                        }
+                    }
+                    else
+                    {
+                        result += "wachtwoord is zwak";
+                    }
+                }
+                else
+                {
+                    result += "Je moet ouder zijn dan 21";
+                }
+            }
+            else
+            {
+                result += "Kies een andere gebruikersnaam";
+            }
+        } else {
+            result = "Je kan geen account aan maken zonder rijbewijs";
+        }
+
+//        if (!heeftRijbewijs)
+//        {
+//            if(gebruikersnamen.contains(usernameUniek))
+//            {
+//               return result = "gebruikersnaam komt al voor";
+//
+//                if (leeftijd < 21)
+//                {
+//                   return result = "je moet minimaal 21 jaar oud zijn";
+//                }
+//                if(wachtwoord.length() < 6){
+//                    sterkte = "zwak";
+//                    result += "wachtwoord te zwak.";
+//                }
+//
+//            }
+//            return result = "Je kan geen account aan maken zonder rijbewijs";
+//        }
+           return result;
     }
 }

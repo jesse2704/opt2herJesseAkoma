@@ -1,16 +1,17 @@
 package src;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
 public class VerhuurFragment {
-    public UUID Id;
-    public Date starttijd;
-    public Date eindtijd;
-    public Huurder huurder;
-    public String huurderEmail;
+    private UUID Id;
+    private Date starttijd;
+    private Date eindtijd;
+    private Huurder huurder;
+    private String huurderEmail;
 
     public VerhuurFragment(Date startTijd, Date eindTijd, Huurder huurder, String huurderEmail)
     {
@@ -24,19 +25,15 @@ public class VerhuurFragment {
     public UUID getId() {
         return Id;
     }
-
     public Date getStartTijd() {
         return starttijd;
     }
-
     public Date getEindTijd() {
         return eindtijd;
     }
-
     public Huurder getHuurder() {
         return huurder;
     }
-
     public String getHuurderEmail() {
         return huurderEmail;
     }
@@ -47,5 +44,10 @@ public class VerhuurFragment {
         String todaysdate = formatter.format(today);
         Date todaysDate= new SimpleDateFormat("d/M/yyyy").parse(todaysdate);
         return todaysDate;
+    }
+
+    public static Date parseDate(String date) throws ParseException {
+        Date parsed = new SimpleDateFormat("d/M/yyyy").parse(date);
+        return parsed;
     }
 }
