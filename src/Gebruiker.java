@@ -1,11 +1,10 @@
 package src;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
-
-import static src.Main.gebruiker;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.UUID;
 
 public abstract class Gebruiker implements AccountInformation {
     protected UUID id;
@@ -16,10 +15,9 @@ public abstract class Gebruiker implements AccountInformation {
     protected String lastName;
     protected String phoneNumber;
     protected Boolean isIngelogd;
-    protected static final ArrayList<Gebruiker> gebruikers = new ArrayList<>();
+    protected static final ArrayList < Gebruiker > gebruikers = new ArrayList < > ();
 
-    public Gebruiker(String userName, String emailAddress, String password, String firstName, String lastName, String phoneNumber)
-    {
+    public Gebruiker(UUID id, String userName, String emailAddress, String password, String firstName, String lastName, String phoneNumber) {
         this.id = UUID.randomUUID();
         this.userName = userName;
         this.emailAddress = emailAddress;
@@ -52,9 +50,24 @@ public abstract class Gebruiker implements AccountInformation {
     public String getPhoneNumber() {
         return phoneNumber;
     }
-    public Boolean getIngelogd() { return isIngelogd; }
-    public static ArrayList<Gebruiker> getGebruikers() {
+    public Boolean getIngelogd() {
+        return isIngelogd;
+    }
+
+    public abstract void logIn();
+    public abstract void logUit();
+
+    public static ArrayList < Gebruiker > getGebruikers() {
         return gebruikers;
+    }
+
+    public Date getTodaysDate() throws ParseException {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        Date today = new Date();
+        String todaysdate = formatter.format(today);
+        Date todaysDate = new SimpleDateFormat("d/M/yyyy").parse(todaysdate);
+
+        return todaysDate;
     }
 
     public void setUserName(String userName) {
@@ -62,14 +75,14 @@ public abstract class Gebruiker implements AccountInformation {
     }
 
     public void setEmailAddress(String emailAddress) {
-        if(emailAddress.matches("^(.+)@(.+)$"))
+        if (emailAddress.matches("^(.+)@(.+)$"))
             this.emailAddress = emailAddress;
         else
-            throw new IllegalArgumentException("Please fill in a valid e-mailaddress.");
+            throw new IllegalArgumentException("Vul aub een valide emailadress in.");
     }
 
     public void setPassword(String passWord) {
-        if(password.matches("((?=.*[a-z])(?=.*\\d)(?=.*[A-Z])(?=.*[@#$%!]).{6,40})"))
+        if (password.matches("((?=.*[a-z])(?=.*\\d)(?=.*[A-Z])(?=.*[@#$%!]).{6,40})"))
             this.password = passWord;
         else
             throw new IllegalArgumentException("Password must be between 6 and 40 characters long,\n" +
@@ -91,6 +104,5 @@ public abstract class Gebruiker implements AccountInformation {
     public void setIngelogd(Boolean ingelogd) {
         isIngelogd = ingelogd;
     }
+
 }
-
-

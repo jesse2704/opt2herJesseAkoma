@@ -1,6 +1,5 @@
 package src;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,8 +12,7 @@ public class VerhuurFragment {
     private Huurder huurder;
     private String huurderEmail;
 
-    public VerhuurFragment(Date startTijd, Date eindTijd, Huurder huurder, String huurderEmail)
-    {
+    public VerhuurFragment(Date startTijd, Date eindTijd, Huurder huurder, String huurderEmail) {
         this.Id = UUID.randomUUID();
         this.starttijd = startTijd;
         this.eindtijd = eindTijd;
@@ -42,7 +40,7 @@ public class VerhuurFragment {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         Date today = new Date();
         String todaysdate = formatter.format(today);
-        Date todaysDate= new SimpleDateFormat("d/M/yyyy").parse(todaysdate);
+        Date todaysDate = new SimpleDateFormat("d/M/yyyy").parse(todaysdate);
         return todaysDate;
     }
 

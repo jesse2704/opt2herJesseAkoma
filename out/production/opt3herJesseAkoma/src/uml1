@@ -1,0 +1,295 @@
+<mxGraphModel dx="0" dy="0" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" background="none" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <mxCell id="node4" parent="1" vertex="1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br/&gt;&lt;b&gt;AbstractCarFactory&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ createAuto(): ModernAuto&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;">
+      <mxGeometry x="1375" y="604" width="222" height="79" as="geometry" />
+    </mxCell>
+    <mxCell id="node0" parent="1" vertex="1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br/&gt;&lt;b&gt;AccountInformation&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ getAccountDetail(): void&lt;br/&gt;+ userOptionMenu(): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;">
+      <mxGeometry x="298" y="598" width="206" height="94" as="geometry" />
+    </mxCell>
+    <mxCell id="node6" parent="1" vertex="1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Authenticatie&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;~ Authenticatie(): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;~ checkUsername(String): Boolean&lt;br/&gt;~ Authentication(String, String): Boolean&lt;br/&gt;~ checkPassword(String): Boolean&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;">
+      <mxGeometry x="-110" y="1220" width="288" height="141" as="geometry" />
+    </mxCell>
+    <mxCell id="node15" parent="1" vertex="1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;AuthenticatieNormaal&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ AuthenticatieNormaal(): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ gebruikers: ArrayList&amp;lt;Gebruiker&amp;gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ checkUsername(String): Boolean&lt;br/&gt;+ checkPassword(String): Boolean&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;">
+      <mxGeometry x="269" y="1790" width="254" height="133" as="geometry" />
+    </mxCell>
+    <mxCell id="node9" parent="1" vertex="1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Auto&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ Auto(String): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ Merk: String&lt;br/&gt;+ Autos: ArrayList&amp;lt;Auto&amp;gt;&lt;br/&gt;+ Fragmenten: ArrayList&amp;lt;VerhuurFragment&amp;gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ getMerk(): String&lt;br/&gt;+ getAutos(): ArrayList&amp;lt;Auto&amp;gt;&lt;br/&gt;+ addFragment(VerhuurFragment): void&lt;br/&gt;+ getFragmenten(): ArrayList&amp;lt;VerhuurFragment&amp;gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;">
+      <mxGeometry x="1014" y="530" width="341" height="211" as="geometry" />
+    </mxCell>
+    <mxCell id="node1" parent="1" vertex="1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br/&gt;&lt;b&gt;AutoInterface&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ maakSchoon(): void&lt;br/&gt;+ getMerk(): String&lt;br/&gt;+ addFragment(VerhuurFragment): void&lt;br/&gt;+ getAantalDeuren(): int&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;">
+      <mxGeometry x="665" y="82" width="282" height="149" as="geometry" />
+    </mxCell>
+    <mxCell id="node2" parent="1" vertex="1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Gebruiker&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ Gebruiker(UUID, String, String, String, String, String, String): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ lastName: String&lt;br/&gt;+ userName: String&lt;br/&gt;+ id: UUID&lt;br/&gt;+ phoneNumber: String&lt;br/&gt;+ isIngelogd: Boolean&lt;br/&gt;+ gebruikers: ArrayList&amp;lt;Gebruiker&amp;gt;&lt;br/&gt;+ password: String&lt;br/&gt;+ emailAddress: String&lt;br/&gt;+ firstName: String&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ getPassword(): String&lt;br/&gt;+ getIngelogd(): Boolean&lt;br/&gt;+ setPassword(String): void&lt;br/&gt;+ getFirstName(): String&lt;br/&gt;+ setEmailAddress(String): void&lt;br/&gt;+ getLastName(): String&lt;br/&gt;+ getPhoneNumber(): String&lt;br/&gt;+ getEmailAddress(): String&lt;br/&gt;+ setFirstName(String): void&lt;br/&gt;+ setPhoneNumber(String): void&lt;br/&gt;+ setUserName(String): void&lt;br/&gt;+ getGebruikers(): ArrayList&amp;lt;Gebruiker&amp;gt;&lt;br/&gt;+ getTodaysDate(): Date&lt;br/&gt;+ setLastName(String): void&lt;br/&gt;+ getId(): UUID&lt;br/&gt;+ setIngelogd(Boolean): void&lt;br/&gt;+ getUserName(): String&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;">
+      <mxGeometry x="198" y="917" width="406" height="629" as="geometry" />
+    </mxCell>
+    <mxCell id="node14" parent="1" vertex="1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Huurder&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ Huurder(UUID, String, String, String, String, String, String): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ licentie: Licentie&lt;br/&gt;+ fragment: ArrayList&amp;lt;VerhuurFragment&amp;gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ getCurrentActiveRentalAmount(): int&lt;br/&gt;+ userOptionMenu(): void&lt;br/&gt;+ kanAutoHuren(): boolean&lt;br/&gt;+ autoHuren(): void&lt;br/&gt;+ getMaxCarFromLicentie(): int&lt;br/&gt;+ hasLicentie(): Boolean&lt;br/&gt;+ setLicentie(Licentie): void&lt;br/&gt;+ getActiveLicentieData(): String&lt;br/&gt;+ getFragment(): ArrayList&amp;lt;VerhuurFragment&amp;gt;&lt;br/&gt;+ getLicentie(): Licentie&lt;br/&gt;+ getAccountDetail(): void&lt;br/&gt;+ getHuurHistorie(): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;">
+      <mxGeometry x="1321" y="1664" width="409" height="375" as="geometry" />
+    </mxCell>
+    <mxCell id="node8" parent="1" vertex="1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br/&gt;&lt;b&gt;HuurderInterface&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ getHuurHistorie(): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;">
+      <mxGeometry x="1382" y="1259" width="190" height="66" as="geometry" />
+    </mxCell>
+    <mxCell id="node3" parent="1" vertex="1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Licentie&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ Licentie(int, int): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ id: UUID&lt;br/&gt;+ maxAuto: int&lt;br/&gt;+ type: int&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ getMaxAuto(): int&lt;br/&gt;+ getType(): int&lt;br/&gt;+ setType(int): void&lt;br/&gt;+ setMaxAuto(int): void&lt;br/&gt;+ getId(): UUID&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;">
+      <mxGeometry x="1713" y="1169" width="180" height="233" as="geometry" />
+    </mxCell>
+    <mxCell id="node11" parent="1" vertex="1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Login&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ Login(): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ gebruikers: ArrayList&amp;lt;Gebruiker&amp;gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ register(): Gebruiker&lt;br/&gt;+ login(String, String): Gebruiker?&lt;br/&gt;+ checkRegisterEligble(Boolean, String, int, String): String&lt;br/&gt;+ login(): Gebruiker?&lt;br/&gt;+ getGebruikers(): ArrayList&amp;lt;Gebruiker&amp;gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;">
+      <mxGeometry x="477" y="2131" width="395" height="189" as="geometry" />
+    </mxCell>
+    <mxCell id="node13" parent="1" vertex="1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;ModernAuto&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ ModernAuto(): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ cruiseControl: Boolean&lt;br/&gt;+ isHired: Boolean&lt;br/&gt;+ Merk: String&lt;br/&gt;+ aantalAirbags: int&lt;br/&gt;+ Autos: ArrayList&amp;lt;ModernAuto&amp;gt;&lt;br/&gt;+ aantalDeuren: int&lt;br/&gt;+ Fragmenten: ArrayList&amp;lt;VerhuurFragment&amp;gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ addFragment(VerhuurFragment): void&lt;br/&gt;+ getAantalAirbags(): int&lt;br/&gt;+ setHired(Boolean): void&lt;br/&gt;+ getFragmenten(): ArrayList&amp;lt;VerhuurFragment&amp;gt;&lt;br/&gt;+ getModernAuto(): ModernAuto&lt;br/&gt;+ getMerk(): String&lt;br/&gt;+ setAantalAirbags(int): void&lt;br/&gt;+ setMerk(String): void&lt;br/&gt;+ setFragmenten(ArrayList&amp;lt;VerhuurFragment&amp;gt;): void&lt;br/&gt;+ maakSchoon(): void&lt;br/&gt;+ getAutos(): ArrayList&amp;lt;ModernAuto&amp;gt;&lt;br/&gt;+ getHired(): Boolean&lt;br/&gt;+ getCruiseControl(): Boolean&lt;br/&gt;+ setAantalDeuren(int): void&lt;br/&gt;+ getAantalDeuren(): int&lt;br/&gt;+ setCruiseControl(Boolean): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;">
+      <mxGeometry x="628" y="354" width="366" height="563" as="geometry" />
+    </mxCell>
+    <mxCell id="node10" parent="1" vertex="1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;ModernAutoFactory&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ ModernAutoFactory(): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ createAuto(): ModernAuto&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;">
+      <mxGeometry x="1153" y="1247" width="209" height="83" as="geometry" />
+    </mxCell>
+    <mxCell id="node12" parent="1" vertex="1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;VerhuurFragment&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ VerhuurFragment(Date, Date, Huurder, String): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ huurderEmail: String&lt;br/&gt;+ Id: UUID&lt;br/&gt;+ starttijd: Date&lt;br/&gt;+ huurder: Huurder&lt;br/&gt;+ eindtijd: Date&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ getStartTijd(): Date&lt;br/&gt;+ getId(): UUID&lt;br/&gt;+ parseDate(String): Date&lt;br/&gt;+ getHuurderEmail(): String&lt;br/&gt;+ getTodaysDate(): Date&lt;br/&gt;+ getHuurder(): Huurder&lt;br/&gt;+ getEindTijd(): Date&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;">
+      <mxGeometry x="1416" y="-19" width="340" height="321" as="geometry" />
+    </mxCell>
+    <mxCell id="node5" parent="1" vertex="1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Verhuurder&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ Verhuurder(UUID, String, String, String, String, String, String): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ Autos: ArrayList&amp;lt;ModernAuto&amp;gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ getInventarisAutos(): void&lt;br/&gt;+ getAccountDetail(): void&lt;br/&gt;+ addAuto(ModernAuto): void&lt;br/&gt;+ removeAuto(int): void&lt;br/&gt;+ userOptionMenu(): void&lt;br/&gt;+ getAutos(): ArrayList&amp;lt;ModernAuto&amp;gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;">
+      <mxGeometry x="758" y="1746" width="407" height="211" as="geometry" />
+    </mxCell>
+    <mxCell id="node7" parent="1" vertex="1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br/&gt;&lt;b&gt;VerhuurderInterface&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ getInventarisAutos(): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;">
+      <mxGeometry x="924" y="1259" width="209" height="66" as="geometry" />
+    </mxCell>
+    <mxCell id="edge5" edge="1" value="" parent="1" source="node15" target="node6" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=0;startArrow=none;endArrow=block;endSize=12;strokeColor=#000082;exitX=0.000;exitY=0.500;exitDx=0;exitDy=0;entryX=0.500;entryY=1.000;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="34" y="1852" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="edge9" edge="1" value="" parent="1" source="node15" target="node2" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=0;startArrow=diamondThinstartSize=12;endArrow=openThin;endSize=12;strokeColor=#595959;exitX=0.500;exitY=1.000;exitDx=0;exitDy=0;entryX=0.131;entryY=1.000;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="396" y="2044" />
+          <mxPoint x="251" y="2044" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="label54" parent="edge9" vertex="1" connectable="0" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;">
+      <mxGeometry x="384" y="1918" as="geometry" />
+    </mxCell>
+    <mxCell id="label58" parent="edge9" vertex="1" connectable="0" value="*" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;">
+      <mxGeometry x="241" y="1551" as="geometry" />
+    </mxCell>
+    <mxCell id="label59" parent="edge9" vertex="1" connectable="0" value="gebruikers" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;">
+      <mxGeometry x="251" y="1585" as="geometry" />
+    </mxCell>
+    <mxCell id="edge13" edge="1" value="" parent="1" source="node9" target="node12" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=0;startArrow=diamondThinstartSize=12;endArrow=openThin;endSize=12;strokeColor=#595959;exitX=0.500;exitY=0.000;exitDx=0;exitDy=0;entryX=0.500;entryY=1.000;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1184" y="328" />
+          <mxPoint x="1586" y="328" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="label78" parent="edge13" vertex="1" connectable="0" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;">
+      <mxGeometry x="1172" y="501" as="geometry" />
+    </mxCell>
+    <mxCell id="label82" parent="edge13" vertex="1" connectable="0" value="*" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;">
+      <mxGeometry x="1461" y="310" as="geometry" />
+    </mxCell>
+    <mxCell id="label83" parent="edge13" vertex="1" connectable="0" value="Fragmenten" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;">
+      <mxGeometry x="1586" y="307" as="geometry" />
+    </mxCell>
+    <mxCell id="edge2" edge="1" value="" parent="1" source="node2" target="node0" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=1;startArrow=none;endArrow=block;endSize=12;strokeColor=#008200;exitX=0.500;exitY=0.000;exitDx=0;exitDy=0;entryX=0.500;entryY=1.000;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="edge7" edge="1" value="" parent="1" source="node14" target="node2" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=0;startArrow=none;endArrow=block;endSize=12;strokeColor=#000082;exitX=0.500;exitY=0.000;exitDx=0;exitDy=0;entryX=0.500;entryY=1.000;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1526" y="1632" />
+          <mxPoint x="401" y="1632" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="edge3" edge="1" value="" parent="1" source="node14" target="node8" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=1;startArrow=none;endArrow=block;endSize=12;strokeColor=#008200;exitX=0.537;exitY=0.000;exitDx=0;exitDy=0;entryX=0.837;entryY=1.001;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="edge19" edge="1" value="" parent="1" source="node14" target="node3" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=0;startArrow=diamondThinstartSize=12;endArrow=openThin;endSize=12;strokeColor=#595959;exitX=0.982;exitY=0.000;exitDx=0;exitDy=0;entryX=0.052;entryY=1.000;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="label114" parent="edge19" vertex="1" connectable="0" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;">
+      <mxGeometry x="1711" y="1641" as="geometry" />
+    </mxCell>
+    <mxCell id="label118" parent="edge19" vertex="1" connectable="0" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;">
+      <mxGeometry x="1711" y="1412" as="geometry" />
+    </mxCell>
+    <mxCell id="label119" parent="edge19" vertex="1" connectable="0" value="licentie" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;">
+      <mxGeometry x="1723" y="1407" as="geometry" />
+    </mxCell>
+    <mxCell id="edge16" edge="1" value="" parent="1" source="node14" target="node12" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=1;startArrow=none;endArrow=openThin;endSize=12;strokeColor=#595959;exitX=0.753;exitY=0.000;exitDx=0;exitDy=0;entryX=0.786;entryY=1.000;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1629" y="983" />
+          <mxPoint x="1684" y="983" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="label98" parent="edge16" vertex="1" connectable="0" value="«create»" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;">
+      <mxGeometry x="1630" y="964" as="geometry" />
+    </mxCell>
+    <mxCell id="edge20" edge="1" value="" parent="1" source="node14" target="node12" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=0;startArrow=diamondThinstartSize=12;endArrow=openThin;endSize=12;strokeColor=#595959;exitX=0.716;exitY=0.000;exitDx=0;exitDy=0;entryX=0.500;entryY=1.000;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1614" y="328" />
+          <mxPoint x="1586" y="328" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="label120" parent="edge20" vertex="1" connectable="0" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;">
+      <mxGeometry x="1602" y="1641" as="geometry" />
+    </mxCell>
+    <mxCell id="label124" parent="edge20" vertex="1" connectable="0" value="*" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;">
+      <mxGeometry x="1576" y="307" as="geometry" />
+    </mxCell>
+    <mxCell id="label125" parent="edge20" vertex="1" connectable="0" value="fragment" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;">
+      <mxGeometry x="1558" y="328" as="geometry" />
+    </mxCell>
+    <mxCell id="edge10" edge="1" value="" parent="1" source="node11" target="node15" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=1;startArrow=none;endArrow=openThin;endSize=12;strokeColor=#595959;exitX=0.019;exitY=0.000;exitDx=0;exitDy=0;entryX=0.850;entryY=1.000;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="label62" parent="edge10" vertex="1" connectable="0" value="«create»" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;">
+      <mxGeometry x="433" y="2013" as="geometry" />
+    </mxCell>
+    <mxCell id="edge12" edge="1" value="" parent="1" source="node11" target="node2" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=0;startArrow=diamondThinstartSize=12;endArrow=openThin;endSize=12;strokeColor=#595959;exitX=0.500;exitY=0.000;exitDx=0;exitDy=0;entryX=0.131;entryY=1.000;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="675" y="2044" />
+          <mxPoint x="251" y="2044" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="label72" parent="edge12" vertex="1" connectable="0" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;">
+      <mxGeometry x="663" y="2100" as="geometry" />
+    </mxCell>
+    <mxCell id="label76" parent="edge12" vertex="1" connectable="0" value="*" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;">
+      <mxGeometry x="201" y="1585" as="geometry" />
+    </mxCell>
+    <mxCell id="label77" parent="edge12" vertex="1" connectable="0" value="gebruikers" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;">
+      <mxGeometry x="251" y="1551" as="geometry" />
+    </mxCell>
+    <mxCell id="edge21" edge="1" value="" parent="1" source="node11" target="node14" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=1;startArrow=none;endArrow=openThin;endSize=12;strokeColor=#595959;exitX=0.424;exitY=0.000;exitDx=0;exitDy=0;entryX=0.500;entryY=1.000;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="645" y="2066" />
+          <mxPoint x="1526" y="2066" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="label128" parent="edge21" vertex="1" connectable="0" value="«create»" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;">
+      <mxGeometry x="1059" y="2047" as="geometry" />
+    </mxCell>
+    <mxCell id="edge17" edge="1" value="" parent="1" source="node11" target="node5" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=1;startArrow=none;endArrow=openThin;endSize=12;strokeColor=#595959;exitX=0.462;exitY=0.000;exitDx=0;exitDy=0;entryX=0.968;entryY=1.000;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="660" y="2088" />
+          <mxPoint x="1152" y="2088" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="label104" parent="edge17" vertex="1" connectable="0" value="«create»" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;">
+      <mxGeometry x="880" y="2069" as="geometry" />
+    </mxCell>
+    <mxCell id="edge0" edge="1" value="" parent="1" source="node13" target="node1" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=1;startArrow=none;endArrow=block;endSize=12;strokeColor=#008200;exitX=0.459;exitY=0.000;exitDx=0;exitDy=0;entryX=0.465;entryY=1.000;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="edge8" edge="1" value="" parent="1" source="node13" target="node12" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=0;startArrow=diamondThinstartSize=12;endArrow=openThin;endSize=12;strokeColor=#595959;exitX=0.500;exitY=0.000;exitDx=0;exitDy=0;entryX=0.500;entryY=1.000;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="811" y="328" />
+          <mxPoint x="1586" y="328" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="label48" parent="edge8" vertex="1" connectable="0" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;">
+      <mxGeometry x="799" y="332" as="geometry" />
+    </mxCell>
+    <mxCell id="label52" parent="edge8" vertex="1" connectable="0" value="*" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;">
+      <mxGeometry x="1426" y="310" as="geometry" />
+    </mxCell>
+    <mxCell id="label53" parent="edge8" vertex="1" connectable="0" value="Fragmenten" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;">
+      <mxGeometry x="1395" y="328" as="geometry" />
+    </mxCell>
+    <mxCell id="edge1" edge="1" value="" parent="1" source="node10" target="node4" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=1;startArrow=none;endArrow=block;endSize=12;strokeColor=#008200;exitX=0.572;exitY=0.001;exitDx=0;exitDy=0;entryX=0.500;entryY=1.001;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1272" y="1073" />
+          <mxPoint x="1486" y="1073" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="edge11" edge="1" value="" parent="1" source="node10" target="node13" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=1;startArrow=none;endArrow=openThin;endSize=12;strokeColor=#595959;exitX=0.500;exitY=0.000;exitDx=0;exitDy=0;entryX=1.000;entryY=0.718;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1257" y="759" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="label68" parent="edge11" vertex="1" connectable="0" value="«create»" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;">
+      <mxGeometry x="1099" y="740" as="geometry" />
+    </mxCell>
+    <mxCell id="edge18" edge="1" value="" parent="1" source="node12" target="node14" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=0;startArrow=diamondThinstartSize=12;endArrow=openThin;endSize=12;strokeColor=#595959;exitX=0.670;exitY=1.000;exitDx=0;exitDy=0;entryX=0.789;entryY=0.000;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="label108" parent="edge18" vertex="1" connectable="0" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;">
+      <mxGeometry x="1632" y="338" as="geometry" />
+    </mxCell>
+    <mxCell id="label112" parent="edge18" vertex="1" connectable="0" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;">
+      <mxGeometry x="1632" y="1641" as="geometry" />
+    </mxCell>
+    <mxCell id="label113" parent="edge18" vertex="1" connectable="0" value="huurder" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;">
+      <mxGeometry x="1644" y="1641" as="geometry" />
+    </mxCell>
+    <mxCell id="edge4" edge="1" value="" parent="1" source="node5" target="node2" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=0;startArrow=none;endArrow=block;endSize=12;strokeColor=#000082;exitX=0.500;exitY=0.000;exitDx=0;exitDy=0;entryX=0.500;entryY=1.000;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="962" y="1632" />
+          <mxPoint x="401" y="1632" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="edge14" edge="1" value="" parent="1" source="node5" target="node13" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=0;startArrow=diamondThinstartSize=12;endArrow=openThin;endSize=12;strokeColor=#595959;exitX=0.129;exitY=0.000;exitDx=0;exitDy=0;entryX=0.500;entryY=1.000;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="label84" parent="edge14" vertex="1" connectable="0" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;">
+      <mxGeometry x="799" y="1723" as="geometry" />
+    </mxCell>
+    <mxCell id="label88" parent="edge14" vertex="1" connectable="0" value="*" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;">
+      <mxGeometry x="801" y="922" as="geometry" />
+    </mxCell>
+    <mxCell id="label89" parent="edge14" vertex="1" connectable="0" value="Autos" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;">
+      <mxGeometry x="811" y="922" as="geometry" />
+    </mxCell>
+    <mxCell id="edge15" edge="1" value="" parent="1" source="node5" target="node10" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=1;startArrow=none;endArrow=openThin;endSize=12;strokeColor=#595959;exitX=1.000;exitY=0.500;exitDx=0;exitDy=0;entryX=0.482;entryY=1.000;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1273" y="1852" />
+          <mxPoint x="1273" y="1593" />
+          <mxPoint x="1254" y="1593" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="label92" parent="edge15" vertex="1" connectable="0" value="«create»" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;">
+      <mxGeometry x="1202" y="1538" as="geometry" />
+    </mxCell>
+    <mxCell id="edge6" edge="1" value="" parent="1" source="node5" target="node7" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=1;startArrow=none;endArrow=block;endSize=12;strokeColor=#008200;exitX=0.463;exitY=0.000;exitDx=0;exitDy=0;entryX=0.110;entryY=1.000;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points" />
+      </mxGeometry>
+    </mxCell>
+  </root>
+</mxGraphModel>

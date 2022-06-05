@@ -1,99 +1,155 @@
 package src;
 
 import java.text.ParseException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.UUID;
 
-import static src.Main.gebruiker;
+public class Verhuurder extends Gebruiker implements VerhuurderInterface {
+    public ArrayList < ModernAuto > Autos;
 
-public class Verhuurder extends Gebruiker {
-    public ArrayList<Auto> Autos;
-
-    public Verhuurder(String userName, String emailAddress, String password, String firstName, String lastName, String phoneNumber) {
-        super(userName, emailAddress, password, firstName, lastName, phoneNumber);
-        this.Autos = new ArrayList<Auto>();
+    public Verhuurder(UUID id, String userName, String emailAddress, String password, String firstName, String lastName, String phoneNumber) {
+        super(id, userName, emailAddress, password, firstName, lastName, phoneNumber);
+        this.Autos = new ArrayList < ModernAuto > ();
     }
 
-    public ArrayList<Auto> getAutos() {return Autos;}
-    public void addAuto(String merk)
-    {
-        getAutos().add(new Auto(merk));
+    public ArrayList < ModernAuto > getAutos() {
+        return Autos;
     }
-    public void removeAuto(int index) {getAutos().remove(index);}
+    public void addAuto(ModernAuto modernAuto) {
+        getAutos().add(modernAuto);
+    }
+    public void removeAuto(int index) {
+        getAutos().remove(index);
+    }
+
+    @Override
+    public void logIn() {
+        Login.login(this.userName, this.password);
+        Main.gebruiker = this;
+        this.setIngelogd(true);
+        System.out.println("Verhuurder is ingelogd");
+    }
+
+    @Override
+    public void logUit() {
+        this.setIngelogd(false);
+        Main.gebruiker = null;
+        System.out.println("Verhuurder is uitgelogd");
+    }
 
     @Override
     public void userOptionMenu() throws ParseException {
         Scanner scanner = new Scanner(System.in);
 
-        Verhuurder verhuurder = (Verhuurder) gebruiker;
+        Verhuurder verhuurder = (Verhuurder) Main.gebruiker;
         System.out.println("Maak een keuze:");
         System.out.println("1. Auto toevoegen");
         System.out.println("2. Auto verwijderen");
         System.out.println("3. Overzicht");
         System.out.println("4. Inventaris auto's");
-        System.out.println("5. Uitloggen");
+        System.out.println("5. Autos schoonmaken");
+        System.out.println("6. Uitloggen");
         System.out.println("Voer je keus in:");
         int keus = scanner.nextInt();
         scanner.nextLine();
         System.out.println(" ");
         switch (keus) {
             case 1:
-                System.out.println("Welke auto wilt u toevoegen");
+                System.out.println("Merk auto?");
                 String merkAuto = scanner.nextLine();
-                verhuurder.addAuto(merkAuto);
+                System.out.println("CruiseConrtol? (Y / N)");
+                String cruiseControlAuto = scanner.nextLine();
+                Boolean cruise = false;
+                if (cruiseControlAuto == "Y") cruise = true;
+                System.out.println("Aantal deuren?)");
+                int aantalDeuren = scanner.nextInt();
+                System.out.println("Aantal Airbags?)");
+                int aantalAirbags = scanner.nextInt();
+                ModernAutoFactory newAuto = new ModernAutoFactory();
+                ModernAuto modernAuto = newAuto.createAuto();
+                modernAuto.setMerk(merkAuto);
+                modernAuto.setCruiseControl(cruise);
+                modernAuto.setAantalDeuren(aantalDeuren);
+                modernAuto.setAantalAirbags(aantalAirbags);
+                verhuurder.addAuto(modernAuto);
+                ModernAuto.getAutos().add(modernAuto);
 
                 //Back to option menu
-                gebruiker.userOptionMenu();
+                Main.gebruiker.userOptionMenu();
                 break;
             case 2:
-                if (verhuurder.getAutos().isEmpty())
-                {
-                    System.out.println("Je hebt geen autos in je inventaris");
-                    System.out.println(" ");
+                verhuurder.getInventarisAutos();
 
-                    //Back to option menu
-                    gebruiker.userOptionMenu();
-                }
-                int count = -1;
-                for (Auto auto : getAutos())
-                {
-                    count++;
-
-                    System.out.println(count + ". " + auto.getMerk());
-                }
                 System.out.println("Welke auto wilt u verwijderen");
                 int verwijderAuto = scanner.nextInt();
-               verhuurder.removeAuto(verwijderAuto);
+                verhuurder.removeAuto(verwijderAuto);
                 System.out.println("Auto succesvol verwijdert");
 
                 //Back to option menu
-                gebruiker.userOptionMenu();
+                Main.gebruiker.userOptionMenu();
                 break;
             case 3:
                 this.getAccountDetail();
                 break;
             case 4:
-                if (verhuurder.getAutos().isEmpty())
-                {
+                if (verhuurder.getAutos().isEmpty()) {
                     System.out.println("Je hebt geen autos in je inventaris");
                     System.out.println(" ");
 
                     //Back to option menu
-                    gebruiker.userOptionMenu();
+                    Main.gebruiker.userOptionMenu();
                 }
                 int count1 = -1;
                 System.out.println("Inventaris autos: ");
-                for (Auto auto : getAutos())
-                {
+                for (ModernAuto auto: getAutos()) {
                     count1++;
 
                     System.out.println(count1 + ". " + auto.getMerk());
                 }
 
                 //Back to option menu
-                gebruiker.userOptionMenu();
+                Main.gebruiker.userOptionMenu();
                 break;
             case 5:
-                gebruiker = null;
+                ArrayList < ModernAuto > verlopenAutos = new ArrayList < ModernAuto > ();
+                for (ModernAuto auto: this.getAutos()) {
+                    VerhuurFragment laatsteElement = auto.getFragmenten().get(auto.getFragmenten().size() - 1);
+                    if (laatsteElement.getEindTijd().after(getTodaysDate())) {
+                        verlopenAutos.add(auto);
+                    }
+                }
+                int countVerlopenAuto = -1;
+                System.out.println("Lijst met beindigded huurcontracten:");
+                for (ModernAuto verlopenAuto: verlopenAutos) {
+                    countVerlopenAuto++;
+                    System.out.println(countVerlopenAuto + ". " + verlopenAuto.getMerk());
+                }
+                System.out.println("Maak een keuze");
+                int inputAutoSchoonmaken = scanner.nextInt();
+                if (inputAutoSchoonmaken > verlopenAutos.size() || inputAutoSchoonmaken < 0) {
+                    System.out.println("Verkeerde input");
+                    Main.gebruiker.userOptionMenu();
+                } else {
+                    ModernAuto gekozenAuto = verlopenAutos.get(inputAutoSchoonmaken).getModernAuto();
+                    for (ModernAuto modernAuto2: ModernAuto.getAutos()) {
+                        if (modernAuto2 == gekozenAuto) {
+                            modernAuto2.setHired(false);
+                        }
+                        for (ModernAuto auto: this.getAutos()) {
+                            if (auto == gekozenAuto) {
+                                auto.setHired(false);
+                            }
+                        }
+                    }
+                    System.out.println(gekozenAuto.getMerk() + " is schoongemaakt en gereed voor verhuur");
+                }
+
+                //Back to option menu
+                Main.gebruiker.userOptionMenu();
+                break;
+            case 6:
+                Main.gebruiker = null;
                 break;
             default:
                 System.out.println("Foutieve invoer");
@@ -107,8 +163,24 @@ public class Verhuurder extends Gebruiker {
         System.out.println("Phonenumber: " + getPhoneNumber());
         System.out.println("Count inventory cars: " + getAutos().stream().count());
 
-
         //Back to option menu
-        gebruiker.userOptionMenu();
+        Main.gebruiker.userOptionMenu();
+    }
+
+    @Override
+    public void getInventarisAutos() throws ParseException {
+        if (this.getAutos().isEmpty()) {
+            System.out.println("Je hebt geen autos in je inventaris");
+            System.out.println(" ");
+
+            //Back to option menu
+            this.userOptionMenu();
+        }
+        int count = -1;
+        for (ModernAuto auto: getAutos()) {
+            count++;
+
+            System.out.println(count + ". " + auto.getMerk());
+        }
     }
 }
