@@ -7,14 +7,8 @@ import java.util.UUID;
 public class Login {
     private static final ArrayList < Gebruiker > gebruikers = Gebruiker.getGebruikers();
 
-    // The login method ask the username and password and checks if they exist
-    public static Gebruiker login() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Voer uw gebruikersnaam in:");
-        String username = scanner.nextLine();
-        System.out.println("Voer uw wachtwoord in:");
-        String password = scanner.nextLine();
-        System.out.println(" ");
+    public static Gebruiker engageLogin(String username, String password)
+    {
         AuthenticatieNormaal Auth = new AuthenticatieNormaal();
         if (!Auth.Authentication(username, password)) {
             return null;
@@ -28,18 +22,19 @@ public class Login {
         return null;
     }
 
+    // The login method ask the username and password and checks if they exist
+    public static Gebruiker login() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Voer uw gebruikersnaam in:");
+        String username = scanner.nextLine();
+        System.out.println("Voer uw wachtwoord in:");
+        String password = scanner.nextLine();
+        System.out.println(" ");
+        return engageLogin(username, password);
+    }
+
     public static Gebruiker login(String userName, String passWord) {
-        AuthenticatieNormaal Auth = new AuthenticatieNormaal();
-        if (!Auth.Authentication(userName, passWord)) {
-            return null;
-        };
-        for (Gebruiker gebruiker: gebruikers) {
-            if (gebruiker.getUserName().equals(userName) && gebruiker.getPassword().equals(passWord)) {
-                gebruiker.setIngelogd(true);
-                return gebruiker;
-            }
-        }
-        return null;
+        return engageLogin(userName, passWord);
     }
 
     // The register method collects all the data that's needed to create a new user

@@ -4,8 +4,8 @@ import java.util.UUID;
 
 public class Licentie {
     private UUID id;
-    public int type;
-    public int maxAuto;
+    private int type;
+    private int maxAuto;
 
     public Licentie(int type, int maxAuto)
     {

@@ -56,6 +56,7 @@ public abstract class Gebruiker implements AccountInformation {
 
     public abstract void logIn();
     public abstract void logUit();
+    public abstract void reportBug();
 
     public static ArrayList < Gebruiker > getGebruikers() {
         return gebruikers;

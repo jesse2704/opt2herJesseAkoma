@@ -24,9 +24,20 @@ public class Verhuurder extends Gebruiker implements VerhuurderInterface {
     }
 
     @Override
+    public void reportBug() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Bug report!");
+        System.out.println("Wat is er aan de hand verhuurder?");
+        String respons = scanner.nextLine();
+        System.out.println("Dank u wel voor je bugreport, wij zullen zo spoedig mogelijk hier naar kijken");
+
+        Main.bugReports.add(new BugReport(respons, "verhuurder"));
+    }
+
+    @Override
     public void logIn() {
         Login.login(this.userName, this.password);
-        Main.gebruiker = this;
+        Main.loggedInGebruiker = this;
         this.setIngelogd(true);
         System.out.println("Verhuurder is ingelogd");
     }
@@ -34,7 +45,7 @@ public class Verhuurder extends Gebruiker implements VerhuurderInterface {
     @Override
     public void logUit() {
         this.setIngelogd(false);
-        Main.gebruiker = null;
+        Main.loggedInGebruiker = null;
         System.out.println("Verhuurder is uitgelogd");
     }
 
@@ -42,7 +53,7 @@ public class Verhuurder extends Gebruiker implements VerhuurderInterface {
     public void userOptionMenu() throws ParseException {
         Scanner scanner = new Scanner(System.in);
 
-        Verhuurder verhuurder = (Verhuurder) Main.gebruiker;
+        Verhuurder verhuurder = (Verhuurder) Main.loggedInGebruiker;
         System.out.println("Maak een keuze:");
         System.out.println("1. Auto toevoegen");
         System.out.println("2. Auto verwijderen");
@@ -50,6 +61,7 @@ public class Verhuurder extends Gebruiker implements VerhuurderInterface {
         System.out.println("4. Inventaris auto's");
         System.out.println("5. Autos schoonmaken");
         System.out.println("6. Uitloggen");
+        System.out.println("7. Report bug");
         System.out.println("Voer je keus in:");
         int keus = scanner.nextInt();
         scanner.nextLine();
@@ -76,7 +88,7 @@ public class Verhuurder extends Gebruiker implements VerhuurderInterface {
                 ModernAuto.getAutos().add(modernAuto);
 
                 //Back to option menu
-                Main.gebruiker.userOptionMenu();
+                Main.loggedInGebruiker.userOptionMenu();
                 break;
             case 2:
                 verhuurder.getInventarisAutos();
@@ -87,7 +99,7 @@ public class Verhuurder extends Gebruiker implements VerhuurderInterface {
                 System.out.println("Auto succesvol verwijdert");
 
                 //Back to option menu
-                Main.gebruiker.userOptionMenu();
+                Main.loggedInGebruiker.userOptionMenu();
                 break;
             case 3:
                 this.getAccountDetail();
@@ -98,7 +110,7 @@ public class Verhuurder extends Gebruiker implements VerhuurderInterface {
                     System.out.println(" ");
 
                     //Back to option menu
-                    Main.gebruiker.userOptionMenu();
+                    Main.loggedInGebruiker.userOptionMenu();
                 }
                 int count1 = -1;
                 System.out.println("Inventaris autos: ");
@@ -109,7 +121,7 @@ public class Verhuurder extends Gebruiker implements VerhuurderInterface {
                 }
 
                 //Back to option menu
-                Main.gebruiker.userOptionMenu();
+                Main.loggedInGebruiker.userOptionMenu();
                 break;
             case 5:
                 ArrayList < ModernAuto > verlopenAutos = new ArrayList < ModernAuto > ();
@@ -129,7 +141,7 @@ public class Verhuurder extends Gebruiker implements VerhuurderInterface {
                 int inputAutoSchoonmaken = scanner.nextInt();
                 if (inputAutoSchoonmaken > verlopenAutos.size() || inputAutoSchoonmaken < 0) {
                     System.out.println("Verkeerde input");
-                    Main.gebruiker.userOptionMenu();
+                    Main.loggedInGebruiker.userOptionMenu();
                 } else {
                     ModernAuto gekozenAuto = verlopenAutos.get(inputAutoSchoonmaken).getModernAuto();
                     for (ModernAuto modernAuto2: ModernAuto.getAutos()) {
@@ -146,10 +158,13 @@ public class Verhuurder extends Gebruiker implements VerhuurderInterface {
                 }
 
                 //Back to option menu
-                Main.gebruiker.userOptionMenu();
+                Main.loggedInGebruiker.userOptionMenu();
                 break;
             case 6:
-                Main.gebruiker = null;
+                Main.loggedInGebruiker = null;
+                break;
+            case 7:
+                this.reportBug();
                 break;
             default:
                 System.out.println("Foutieve invoer");
@@ -164,7 +179,7 @@ public class Verhuurder extends Gebruiker implements VerhuurderInterface {
         System.out.println("Count inventory cars: " + getAutos().stream().count());
 
         //Back to option menu
-        Main.gebruiker.userOptionMenu();
+        Main.loggedInGebruiker.userOptionMenu();
     }
 
     @Override

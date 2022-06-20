@@ -1,6 +1,6 @@
 package src;
 
-public interface AbstractCarFactory {
-   public ModernAuto createAuto();
+public interface AbstractCarFactory<T> {
+   public T createAuto();
 }
 

@@ -2,12 +2,14 @@ package src;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.UUID;
 
 public class Main {
-    public static Gebruiker gebruiker;
+    public static ArrayList<BugReport> bugReports;
+    public static Gebruiker loggedInGebruiker;
 
     public static void main(String[] args) throws ParseException {
         //Huurders
@@ -70,7 +72,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         // check if any user is logged in, if not ask user to login or register
-        if (gebruiker == null) {
+        if (loggedInGebruiker == null) {
 
             System.out.println("1. Inloggen");
             System.out.println("2. Registreren");
@@ -81,22 +83,22 @@ public class Main {
             // check if user wants to login
             switch (log) {
                 case 1:
-                    gebruiker = Login.login();
+                    loggedInGebruiker = Login.login();
                     break;
                 // check if user want to register
                 case 2:
-                    gebruiker = Login.register();
+                    loggedInGebruiker = Login.register();
                     break;
                 default:
                     System.out.println("Foutieve invoer");
                     main(args);
             }
             // if something went wrong block here
-            if (gebruiker == null) {
+            if (loggedInGebruiker == null) {
                 System.out.println("Geen gebruiker gevonden!");
                 main(args);
             }
         }
-        gebruiker.userOptionMenu();
+        loggedInGebruiker.userOptionMenu();
     }
 }

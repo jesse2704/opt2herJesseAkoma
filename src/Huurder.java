@@ -30,7 +30,7 @@ public class Huurder extends Gebruiker implements HuurderInterface{
         this.licentie = licentie;
     }
     public int getMaxCarFromLicentie() {
-        return this.getLicentie().maxAuto;
+        return this.getLicentie().getMaxAuto();
     }
     public Boolean hasLicentie() {
         return this.getLicentie() != null;
@@ -79,9 +79,20 @@ public class Huurder extends Gebruiker implements HuurderInterface{
     }
 
     @Override
+    public void reportBug() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Bug report!");
+        System.out.println("Wat is er aan de hand huurder?");
+        String respons = scanner.nextLine();
+        System.out.println("Dank u wel voor je bugreport, wij zullen zo spoedig mogelijk hier naar kijken");
+
+        Main.bugReports.add(new BugReport(respons, "huurder"));
+    }
+
+    @Override
     public void logIn() {
         Login.login(this.userName, this.password);
-        Main.gebruiker = this;
+        Main.loggedInGebruiker = this;
         this.setIngelogd(true);
         System.out.println("Huurder is ingelogd");
     }
@@ -89,7 +100,7 @@ public class Huurder extends Gebruiker implements HuurderInterface{
     @Override
     public void logUit() {
         this.setIngelogd(false);
-        Main.gebruiker = null;
+        Main.loggedInGebruiker = null;
         System.out.println("Huurder is uitgelogd");
     }
 
@@ -103,6 +114,7 @@ public class Huurder extends Gebruiker implements HuurderInterface{
         System.out.println("1. Auto huren");
         System.out.println("2. Overzicht");
         System.out.println("3. Uitloggen");
+        System.out.println("4. Report bug");
         System.out.println("Voer je keus in:");
         int keus = scanner.nextInt();
         scanner.nextLine();
@@ -116,7 +128,10 @@ public class Huurder extends Gebruiker implements HuurderInterface{
                 this.getAccountDetail();
                 break;
             case 3:
-                Main.gebruiker = null;
+                Main.loggedInGebruiker = null;
+                break;
+            case 4:
+                this.reportBug();
                 break;
             default:
                 System.out.println("Foutieve invoer");
@@ -146,7 +161,7 @@ public class Huurder extends Gebruiker implements HuurderInterface{
 
 
         //Back to option menu
-        Main.gebruiker.userOptionMenu();
+        Main.loggedInGebruiker.userOptionMenu();
     }
 
     public void autoHuren() throws ParseException {
@@ -220,7 +235,7 @@ public class Huurder extends Gebruiker implements HuurderInterface{
                             System.out.println("Uw geselecteerde auto is gehuurd");
 
                             //Back to option menu
-                            Main.gebruiker.userOptionMenu();
+                            Main.loggedInGebruiker.userOptionMenu();
                         }
                     }
                 } else {
