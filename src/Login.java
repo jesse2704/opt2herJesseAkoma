@@ -10,7 +10,7 @@ public class Login {
     public static Gebruiker engageLogin(String username, String password)
     {
         AuthenticatieNormaal Auth = new AuthenticatieNormaal();
-        if (!Auth.Authentication(username, password)) {
+        if (Auth.Authentication(username, password)) {
             return null;
         };
         for (Gebruiker gebruiker: gebruikers) {
@@ -69,58 +69,32 @@ public class Login {
         return gebruikers;
     }
 
-    public static String checkRegisterEligble(Boolean heeftRijbewijs, String usernameUniek, int leeftijd, String wachtwoord) {
-        String result = "";
-        ArrayList < String > gebruikersnamen = new ArrayList < > ();
+    public static String checkRegisterEligble(Boolean heeftRijbewijs, Boolean usernameUniek, int leeftijd, String wachtwoord) {
+        ArrayList<String> result = new ArrayList<String>();
         String sterkte = "zwak";
 
-        for (Gebruiker gebruiker: Login.getGebruikers()) {
-            gebruikersnamen.add(gebruiker.getUserName());
-        }
-
         if (heeftRijbewijs) {
-            if (!gebruikersnamen.contains(usernameUniek)) {
+            if (usernameUniek) {
                 if (leeftijd >= 21) {
-                    if (wachtwoord.length() > 6 && wachtwoord.matches(".*[A-Z].*")) {
-                        sterkte = "matig";
+                    if (wachtwoord == "goed") {
+                        sterkte = "goed";
+                        result.add("Gebruiker kan worden aangemaakt!");
 
-                        if (wachtwoord.matches("^(?=.*[a-z])(?=.*\\d)(?=.*[A-Z])" + "(?=.*[@#$%!]).+$")) {
-                            sterkte = "goed";
-                            result = "Gebruiker kan worden aangemaakt";
-                        } else {
-                            result += "wachtwoord is matig";
-                        }
-                    } else {
-                        result += "wachtwoord is zwak";
+                    } else if (wachtwoord == "matig") {
+                        result.add("Wachtwoord is matig");
+                    } else if (wachtwoord == "zwak") {
+                        result.add("Wachtwoord is zwak");
                     }
                 } else {
-                    result += "Je moet ouder zijn dan 21";
+                    result.add("Je moet ouder zijn dan 20");
                 }
             } else {
-                result += "Kies een andere gebruikersnaam";
+                result.add("Gebruikersnaam is niet uniek");
             }
         } else {
-            result = "Je kan geen account aan maken zonder rijbewijs";
+            result.add("Je kan geen account aan maken zonder rijbewijs");
         }
 
-        //        if (!heeftRijbewijs)
-        //        {
-        //            if(gebruikersnamen.contains(usernameUniek))
-        //            {
-        //               return result = "gebruikersnaam komt al voor";
-        //
-        //                if (leeftijd < 21)
-        //                {
-        //                   return result = "je moet minimaal 21 jaar oud zijn";
-        //                }
-        //                if(wachtwoord.length() < 6){
-        //                    sterkte = "zwak";
-        //                    result += "wachtwoord te zwak.";
-        //                }
-        //
-        //            }
-        //            return result = "Je kan geen account aan maken zonder rijbewijs";
-        //        }
-        return result;
+        return result.get(0);
     }
 }

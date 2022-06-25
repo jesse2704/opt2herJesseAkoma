@@ -24,7 +24,7 @@ public class Verhuurder extends Gebruiker implements VerhuurderInterface {
     }
 
     @Override
-    public void reportBug() {
+    public void reportBug() throws ParseException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Bug report!");
         System.out.println("Wat is er aan de hand verhuurder?");
@@ -32,6 +32,7 @@ public class Verhuurder extends Gebruiker implements VerhuurderInterface {
         System.out.println("Dank u wel voor je bugreport, wij zullen zo spoedig mogelijk hier naar kijken");
 
         Main.bugReports.add(new BugReport(respons, "verhuurder"));
+        Main.loggedInGebruiker.userOptionMenu();
     }
 
     @Override
@@ -75,9 +76,11 @@ public class Verhuurder extends Gebruiker implements VerhuurderInterface {
                 Boolean cruise = false;
                 if (cruiseControlAuto == "Y") cruise = true;
                 System.out.println("Aantal deuren?)");
-                int aantalDeuren = scanner.nextInt();
+                int aantalDeuren = 0;
+                try { aantalDeuren = scanner.nextInt();} catch (Exception e) {System.out.println("Aantal deuren hebben geen juiste waarden");}
                 System.out.println("Aantal Airbags?)");
-                int aantalAirbags = scanner.nextInt();
+                int aantalAirbags = 0;
+                try { aantalAirbags = scanner.nextInt();} catch (Exception e) {System.out.println("Airbags hebben geen juiste waarden");}
                 ModernAutoFactory newAuto = new ModernAutoFactory();
                 ModernAuto modernAuto = newAuto.createAuto();
                 modernAuto.setMerk(merkAuto);
@@ -127,7 +130,7 @@ public class Verhuurder extends Gebruiker implements VerhuurderInterface {
                 ArrayList < ModernAuto > verlopenAutos = new ArrayList < ModernAuto > ();
                 for (ModernAuto auto: this.getAutos()) {
                     VerhuurFragment laatsteElement = auto.getFragmenten().get(auto.getFragmenten().size() - 1);
-                    if (laatsteElement.getEindTijd().after(getTodaysDate())) {
+                    if (laatsteElement.getEindTijd().after(getTodaysDate()) && auto.getHired() == true) {
                         verlopenAutos.add(auto);
                     }
                 }
@@ -137,12 +140,21 @@ public class Verhuurder extends Gebruiker implements VerhuurderInterface {
                     countVerlopenAuto++;
                     System.out.println(countVerlopenAuto + ". " + verlopenAuto.getMerk());
                 }
+                if (verlopenAutos.isEmpty())
+                {
+                    System.out.println("Er zijn momenteel geen auto's die schoonmaak nodig hebben");
+                    Main.loggedInGebruiker.userOptionMenu();
+                }
                 System.out.println("Maak een keuze");
-                int inputAutoSchoonmaken = scanner.nextInt();
+                int inputAutoSchoonmaken = -1;
+                try { inputAutoSchoonmaken = scanner.nextInt();} catch (Exception e) {System.out.println("Verkeerde input");}
+
+
                 if (inputAutoSchoonmaken > verlopenAutos.size() || inputAutoSchoonmaken < 0) {
                     System.out.println("Verkeerde input");
                     Main.loggedInGebruiker.userOptionMenu();
-                } else {
+                }
+                else {
                     ModernAuto gekozenAuto = verlopenAutos.get(inputAutoSchoonmaken).getModernAuto();
                     for (ModernAuto modernAuto2: ModernAuto.getAutos()) {
                         if (modernAuto2 == gekozenAuto) {

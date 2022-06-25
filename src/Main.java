@@ -8,7 +8,7 @@ import java.util.Scanner;
 import java.util.UUID;
 
 public class Main {
-    public static ArrayList<BugReport> bugReports;
+    public static ArrayList<BugReport> bugReports = new ArrayList<BugReport>();
     public static Gebruiker loggedInGebruiker;
 
     public static void main(String[] args) throws ParseException {
@@ -43,6 +43,7 @@ public class Main {
         auto2.setAantalAirbags(4);
         auto2.setCruiseControl(false);
         auto2.setAantalDeuren(5);
+        auto2.setHired(true);
 
         //Add cars to final list
         ModernAuto.getAutos().add(auto1);
@@ -77,7 +78,8 @@ public class Main {
             System.out.println("1. Inloggen");
             System.out.println("2. Registreren");
             System.out.println("Maak een keuze:");
-            int log = scanner.nextInt();
+            int log = 0;
+            try{ log = scanner.nextInt();} catch (Exception e) { System.out.println("Foutieve invoer");}
             scanner.nextLine();
             System.out.println(" ");
             // check if user wants to login

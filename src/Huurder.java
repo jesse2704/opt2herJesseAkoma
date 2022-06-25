@@ -79,7 +79,7 @@ public class Huurder extends Gebruiker implements HuurderInterface{
     }
 
     @Override
-    public void reportBug() {
+    public void reportBug() throws ParseException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Bug report!");
         System.out.println("Wat is er aan de hand huurder?");
@@ -87,6 +87,7 @@ public class Huurder extends Gebruiker implements HuurderInterface{
         System.out.println("Dank u wel voor je bugreport, wij zullen zo spoedig mogelijk hier naar kijken");
 
         Main.bugReports.add(new BugReport(respons, "huurder"));
+        Main.loggedInGebruiker.userOptionMenu();
     }
 
     @Override
